@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar class="toolbar">
+    <ion-title class="tituloo">EA 8- Registro de personas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="estilo" padding>
+  <h2>Registrar personas </h2>
+
+  <!-- Formulario para registrar los datos del evento -->
+  <input #eventNameInput type="text" placeholder="Nombre" />
+  <input #managerNameInput type="text" placeholder="Correo" />
+  <input #phoneInput type="number" placeholder="Edad" />
+
+  <button
+    (click)="addEvent(
+      eventNameInput.value,
+      managerNameInput.value,
+      phoneInput.value
+    );
+    eventNameInput.value = '';
+    managerNameInput.value = '';
+    phoneInput.value = ''"
+  >
+    Registrar Evento
+  </button>
+
+  
+  <table class="tablita" border="1" style="margin-top: 20px; width: 100%; text-align: left">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Correo</th>
+        <th>Edad</th>
+        <th>Eliminar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let event of events">
+        <td>{{ event.id }}</td>
+        <td>{{ event.name }}</td>
+        <td>{{ event.managerName }}</td>
+        <td>{{ event.phone }}</td>
+        <td>
+          <button (click)="removeEvent(event.id)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</ion-content>
